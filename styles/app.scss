@@ -1,0 +1,131 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap");
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+    [x-cloak] {
+        display: none;
+    }
+
+    .font-poppins {
+        font-family: 'Poppins', sans-serif;
+    }
+    .font-open-sans {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    // Global variables
+    .rounded-global {
+        @apply rounded;
+    }
+    .input-text-size-global {
+        @apply text-sm;
+    }
+
+    // Buttons
+    .btn {
+        @apply px-5 py-1 inline-flex flex-row gap-2 items-center input-text-size-global text-white  whitespace-nowrap rounded-global border-2 border-transparent;
+    }
+    .btn-primary {
+        @apply btn;
+        @apply bg-primary-700 hover:bg-primary-800 active:bg-primary-900;
+        @apply dark:bg-primary-600 dark:hover:bg-primary-700 dark:active:bg-primary-800;
+    }
+    .btn-accent {
+        @apply btn;
+        @apply bg-accent-600 hover:bg-accent-700 active:bg-accent-800;
+    }
+    .btn-transparent {
+        @apply btn;
+        @apply text-dark-700 hover:text-dark-200 border-dark-700 bg-transparent hover:bg-dark-700 active:bg-dark-900;
+        @apply dark:text-dark-200 dark:hover:text-dark-700 dark:border-dark-200 dark:hover:bg-dark-100 dark:active:bg-dark-300;
+    }
+
+    // Icon Buttons
+    .btn-icon {
+        @apply p-2 text-white rounded-full cursor-pointer border-2 border-transparent;
+        @apply hover:bg-gray-200;
+        @apply hover:dark:bg-dark-700;
+        svg {
+            @apply w-5 h-5;
+        }
+    }
+    .btn-action {
+        @apply btn-icon;
+        @apply border-accent-500;
+        @apply bg-white hover:bg-accent-500 text-accent-600 hover:text-dark-200;
+        @apply dark:bg-dark-600 hover:dark:bg-accent-500 text-accent-400 hover:text-dark-200;
+    }
+
+    // Label
+    label {
+        @apply input-text-size-global text-primary-700 dark:text-primary-200 inline-flex flex-row items-center gap-2;
+    }
+
+    // Input Box
+    .input-box {
+        @apply block rounded-global px-3 py-1 input-text-size-global border text-dark-700 dark:text-white outline-0;
+        @apply bg-white border-dark-500 focus:border-accent-600;
+        @apply dark:bg-dark-600 dark:border-dark-600 focus:dark:border-dark-400;
+    }
+    .dark {
+        input[type=date],
+        input[type=month],
+        input[type=time],
+        input[type=datetime-local] {
+            &::-webkit-calendar-picker-indicator {
+                filter: invert(1);
+            }
+        }
+        input[type=file]::-webkit-file-upload-button {
+            filter: invert(1);
+            border: 1px solid transparent;
+        }
+    }
+
+    // Text-box
+    .text-box {
+        @extend .input-box;
+        min-height: 4rem;
+    }
+
+    // Checkbox
+    .checkbox {
+        @apply appearance-none w-5 h-5 bg-primary-600 rounded-global cursor-pointer;
+        &:checked {
+            @apply relative inline-flex items-center justify-center;
+            &:after {
+                content: '✓';
+                @apply absolute text-lg font-bold text-white;
+            }
+        }
+    }
+
+    // Radio
+    .radio {
+        @apply checkbox;
+        @apply rounded-full;
+    }
+
+    // Select Box
+    .select-box {
+        @apply appearance-none block rounded-global pl-3 pr-7 py-1 input-text-size-global border text-dark-700 dark:text-white outline-0 truncate cursor-pointer relative;
+        @apply bg-white border-dark-500 active:border-accent-600;
+        @apply dark:bg-dark-600 dark:border-dark-600 active:dark:border-dark-400;
+
+        background-image: url('/images/arrow-down.svg');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px;
+    }
+    .dark .select-box {
+        background-image: url('/images/arrow-down-light.svg');
+    }
+}
