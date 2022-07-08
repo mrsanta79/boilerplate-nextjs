@@ -4,7 +4,7 @@ export default function Document() {
 	return (
 		<Html>
 			<Head>
-				<title>{process.env.NEXT_PUBLIC_APP_NAME}</title>
+				<link rel="icon" href="/favicon.ico" type="image/ico" />
 			</Head>
 
 			<body className="bg-blue-50 dark:bg-darkest font-sans antialiased">
