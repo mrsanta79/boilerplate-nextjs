@@ -29,6 +29,22 @@
         @apply text-sm;
     }
 
+    // NProgress
+    #nprogress {
+        .bar {
+            @apply bg-primary-500;
+        }
+        .spinner-icon {
+            @apply border-primary-500;
+        }
+    }
+
+    // Universal Loader
+    .loader {
+        @apply border-2 border-transparent border-t-primary-500 border-l-primary-500 rounded-full;
+        animation-duration: 0.6s;
+    }
+
     // Buttons
     .btn {
         @apply px-5 py-1 inline-flex flex-row gap-2 items-center input-text-size-global text-white  whitespace-nowrap rounded-global border-2 border-transparent font-poppins;
