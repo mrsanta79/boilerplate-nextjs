@@ -1,9 +1,16 @@
+import { useEffect, useState } from 'react';
 import usePageTitle from '../src/hooks/usePageTitle';
 import { getCurrentTheme } from '../src/providers/ThemeProvider';
 
 export default function Home() {
 	const pageTitle = usePageTitle('Home');
-	const currentTheme = getCurrentTheme();
+	const [currentTheme, setCurrentTheme] = useState('dark');
+
+	useEffect(() =>{
+		if(typeof window !== 'undefined') {
+			setCurrentTheme(getCurrentTheme());
+		}
+	}, []);
 
 	return (
 		<>

@@ -8,7 +8,7 @@ export function useThemeToggle() {
 }
 
 export function getCurrentTheme() {
-    const isSystemThemeDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isSystemThemeDark = window.localStorage.getItem('theme') === 'dark' || (!('theme' in window.localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     return isSystemThemeDark ? 'dark' : 'light' || 'light';
 }
