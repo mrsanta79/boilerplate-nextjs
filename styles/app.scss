@@ -45,6 +45,28 @@
         animation-duration: 0.6s;
     }
 
+    // Scroll bar
+    .custom-scroll {
+        &::-webkit-scrollbar-track {
+            @apply bg-dark-800;
+        }
+        &::-webkit-scrollbar {
+            @apply transition-all duration-300 w-2 h-4 bg-transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            @apply bg-dark-500 hover:bg-dark-300 rounded-lg m-1;
+        }
+        &.overlapping {
+            overflow: overlay;
+            &::-webkit-scrollbar-thumb {
+                @apply hidden;
+            }
+            &:hover::-webkit-scrollbar-thumb {
+                display: inherit;
+            }
+        }
+    }
+
     // Buttons
     .btn {
         @apply px-5 py-1 inline-flex flex-row gap-2 items-center input-text-size-global text-white  whitespace-nowrap rounded-global border-2 border-transparent font-poppins;
