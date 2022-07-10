@@ -40,7 +40,7 @@ export function ThemeProvider({ children }) {
     // Update theme
     useEffect(() => {
         // HTML
-        const htmlNode = document.querySelector('html');
+        const htmlNode = window.document.documentElement;
 
         // Toggle theme
         if(theme === 'dark') {
