@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { ThemeProvider } from '../src/providers/ThemeProvider';
-import '../styles/app.scss';
-import Loader from '../src/components/Loader';
+import { ThemeProvider } from '@providers/ThemeProvider';
+import '/styles/app.scss';
+import Loader from '@comps/Loader';
 
 // NProgress config
 NProgress.configure({
