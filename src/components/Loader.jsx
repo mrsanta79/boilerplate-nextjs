@@ -13,5 +13,5 @@ Loader.propTypes = {
 }
 Loader.defaultProps = {
     size: 'w-6 h-6',
-    color: '',
+    color: 'auto',
 }
