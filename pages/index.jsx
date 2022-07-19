@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import usePageTitle from '@hooks/usePageTitle';
 import { getCurrentTheme } from '@providers/ThemeProvider';
+import Metadata from '@comps/Metadata';
 
 export default function Home() {
 	const pageTitle = usePageTitle('Home');
@@ -15,6 +16,9 @@ export default function Home() {
 	return (
 		<>
 			{pageTitle}
+
+			{/* Metatags */}
+			<Metadata title='NextJS Dashboard' />
 
 			{/* Body */}
 			<div className="flex flex-col justify-center items-center my-20">
