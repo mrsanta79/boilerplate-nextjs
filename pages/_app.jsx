@@ -5,6 +5,7 @@ import 'nprogress/nprogress.css';
 import { ThemeProvider } from '@providers/ThemeProvider';
 import '/styles/app.scss';
 import Loader from '@comps/Loader';
+import Head from 'next/head';
 
 // NProgress config
 NProgress.configure({
@@ -23,10 +24,29 @@ export default function Application({ Component, pageProps }) {
         setTimeout(() => {
             setPageLoadingStatus(false);
         }, 500);
+
+		// Register serviceWorker
+		if("serviceWorker" in navigator) {
+			window.addEventListener("load", function () {
+				navigator.serviceWorker.register("/service-worker.js").then(
+					function (registration) {
+						console.log("Service Worker registered");
+					},
+					function (err) {
+						console.log("Service Worker registration failed");
+					}
+				);
+			});
+		}
     }, []);
 
 	return (
 		<>
+			{/* Heads */}
+			<Head>
+				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			</Head>
+
 			{/* Body */}
 			<ThemeProvider>
 
