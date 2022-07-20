@@ -28,14 +28,10 @@ export default function Application({ Component, pageProps }) {
 		// Register serviceWorker
 		if("serviceWorker" in navigator) {
 			window.addEventListener("load", function () {
-				navigator.serviceWorker.register("/sw.js").then(
-					function (registration) {
-						console.log("Service Worker registered");
-					},
-					function (err) {
-						console.log("Service Worker registration failed");
-					}
-				);
+				navigator.serviceWorker
+					.register("/sw.js")
+					.then(serviceWorker => console.log(`Service Worker registered`))
+					.catch(error => console.log(`Service Worker registration failed`));
 			});
 		}
     }, []);
