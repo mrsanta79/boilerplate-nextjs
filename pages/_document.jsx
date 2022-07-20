@@ -12,9 +12,9 @@ export default function Document() {
 				<meta name="theme-color" content="#27272a" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-				{/* <link rel="manifest" href="/manifest.json" />
+				{/* <link rel="manifest" href="/manifest.json" /> */}
 
-				<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120-precomposed.png" />
+				{/* <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120-precomposed.png" />
 				<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png" />
 				<link rel="apple-touch-startup-image" href="/splash-screens/splash-screen-640-x-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
 				<link rel="apple-touch-startup-image" href="/splash-screens/splash-screen-750-x-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
