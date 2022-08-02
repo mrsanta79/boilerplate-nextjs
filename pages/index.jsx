@@ -26,6 +26,8 @@ export default function Home() {
 
 				<h1 className="text-2xl text-dark-800 dark:text-dark-200">Your current theme is: <span className="uppercase">{currentTheme}</span></h1>
 			</div>
+
+			<input type="file" className="input-box" />
 		</>
 	);
 }

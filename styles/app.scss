@@ -131,6 +131,12 @@
         &::placeholder{
             @apply text-dark-400;
         }
+        &[type=file] {
+            @apply cursor-pointer;
+            &::file-selector-button {
+                @apply cursor-pointer border border-transparent bg-primary-100 rounded-full text-primary-600 font-bold px-2;
+            }
+        }
     }
     .dark {
         input[type=date],
@@ -138,12 +144,8 @@
         input[type=time],
         input[type=datetime-local] {
             &::-webkit-calendar-picker-indicator {
-                filter: invert(1);
+                @apply invert;
             }
-        }
-        input[type=file]::-webkit-file-upload-button {
-            filter: invert(1);
-            border: 1px solid transparent;
         }
         input[type="search"] {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' width='18px' height='18px' stroke='gray' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
