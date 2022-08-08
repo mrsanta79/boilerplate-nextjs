@@ -1,24 +1,23 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap");
-* {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
-    font-family: 'Open Sans', sans-serif;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+        font-family: 'Montserrat', sans-serif;
+        box-sizing: border-box;
+    }
+
     [x-cloak] {
         display: none;
     }
 
-    .font-poppins {
-        font-family: 'Poppins', sans-serif;
+    .font-primary {
+        font-family: 'Comfortaa', sans-serif;
     }
-    .font-open-sans {
-        font-family: 'Open Sans', sans-serif;
+    .font-secondary {
+        font-family: 'Montserrat', sans-serif;
     }
 
     // Global variables
@@ -69,7 +68,7 @@
 
     // Buttons
     .btn {
-        @apply px-5 py-1 inline-flex flex-row gap-2 items-center input-text-size-global text-white  whitespace-nowrap rounded-global border-2 border-transparent font-poppins;
+        @apply px-5 py-1 inline-flex flex-row gap-2 items-center input-text-size-global text-white  whitespace-nowrap rounded-global border-2 border-transparent font-primary;
     }
     .btn-primary {
         @apply btn;
