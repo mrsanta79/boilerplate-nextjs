@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import '/styles/globals.css';
 import 'nprogress/nprogress.css';
-import { ThemeProvider } from '@providers/ThemeProvider';
 import '/styles/app.scss';
-import Loader from '@comps/Loader';
 import Head from 'next/head';
+import Loader from '@comps/Loader';
+import { ThemeProvider } from '@providers/ThemeProvider';
 
 // NProgress config
 NProgress.configure({
