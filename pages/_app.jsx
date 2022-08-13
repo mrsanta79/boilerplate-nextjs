@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Router from 'next/router';
+import Head from 'next/head';
 import NProgress from 'nprogress';
 import '/styles/globals.css';
 import 'nprogress/nprogress.css';
 import '/styles/app.scss';
-import Head from 'next/head';
 import Loader from '@comps/Loader';
 import { ThemeProvider } from '@providers/ThemeProvider';
 

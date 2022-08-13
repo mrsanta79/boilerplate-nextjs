@@ -6,6 +6,12 @@ export default function Document() {
 			<Head>
 				<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
 
+				{/* Prefetch for faster font loading */}
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+				<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+				<link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
+
 				{/* Metadata */}
 				<meta name="mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
