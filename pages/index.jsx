@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import usePageTitle from '@hooks/usePageTitle';
+import usePageTitle from '@hooks/pageTitle';
 import { getCurrentTheme } from '@providers/ThemeProvider';
 import Metadata from '@comps/Metadata';
 
