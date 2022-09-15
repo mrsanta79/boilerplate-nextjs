@@ -4,7 +4,8 @@ export default function Document() {
 	return (
 		<Html lang="en-US">
 			<Head>
-				<link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+				<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+				<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
 				{/* Prefetch for faster font loading */}
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
