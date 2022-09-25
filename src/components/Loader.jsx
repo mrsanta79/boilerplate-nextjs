@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export default function Loader({ size, color }) {
     return (
-        <span className={`loader animation animate-spin ${size}`} style={{ borderLeftColor: color, borderTopColor: color }}></span>
+        <span className={`loader ${size}`} style={{ borderLeftColor: color, borderTopColor: color }}></span>
     )
 }
 
