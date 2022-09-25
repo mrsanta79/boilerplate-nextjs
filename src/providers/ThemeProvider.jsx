@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 const ThemeContext = React.createContext();
 const ThemeToggleContext = React.createContext();
 
-export function useThemeToggle() {
+export function useThemeToggle(customTheme = '') {
     return useContext(ThemeToggleContext);
 }
 
@@ -16,11 +16,34 @@ export function getCurrentTheme() {
 export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState();
 
-    function toggleTheme() {
-        setTheme(() =>  theme === 'dark' ? 'light' : 'dark');
+    function toggleTheme(customTheme = '') {
+        if(customTheme !== '') {
 
-        // Set theme on local storage
-        localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
+            // Set defined theme
+            if(customTheme !== 'auto') {
+
+                // Set custom theme
+                setTheme(() =>  customTheme);
+
+                // Set theme on local storage
+                localStorage.setItem('theme', customTheme);
+            } else {
+
+                // Remove custom theme from local storage if mode is auto
+                localStorage.removeItem('theme');
+
+                // Get current system theme
+                setTheme(() =>  getCurrentTheme());
+            }
+        } else {
+            console.log('T', theme);
+
+            // Toggle theme if property is not defined
+            setTheme(() =>  theme === 'dark' ? 'light' : 'dark');
+
+            // Set theme on local storage
+            localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
+        }
     }
 
     function updateSystemDefaultTheme() {
@@ -58,3 +81,4 @@ export function ThemeProvider({ children }) {
         </ThemeContext.Provider>
     );
 }
+
