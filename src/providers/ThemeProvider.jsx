@@ -36,7 +36,6 @@ export function ThemeProvider({ children }) {
                 setTheme(() =>  getCurrentTheme());
             }
         } else {
-            console.log('T', theme);
 
             // Toggle theme if property is not defined
             setTheme(() =>  theme === 'dark' ? 'light' : 'dark');
