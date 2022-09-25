@@ -6,6 +6,7 @@ export default function Document() {
 			<Head>
 				<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 				<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+				<link rel="canonical" href={process.env.NEXT_PUBLIC_APP_URL}/>
 
 				{/* Prefetch for faster font loading */}
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
