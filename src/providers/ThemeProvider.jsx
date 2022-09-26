@@ -13,6 +13,10 @@ export const getCurrentTheme = _ => {
     return isSystemThemeDark ? 'dark' : 'light' || 'light';
 }
 
+export const isSystemDefaultTheme = _ => {
+    return window.localStorage.getItem('theme') === null ? true : false;
+}
+
 export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState();
 
