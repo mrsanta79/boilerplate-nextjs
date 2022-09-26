@@ -3,11 +3,11 @@ import React, { useContext, useEffect, useState } from 'react';
 const ThemeContext = React.createContext();
 const ThemeToggleContext = React.createContext();
 
-export function useThemeToggle(customTheme = '') {
+export const useThemeToggle = (customTheme = '') => {
     return useContext(ThemeToggleContext);
 }
 
-export function getCurrentTheme() {
+export const getCurrentTheme = _ => {
     const isSystemThemeDark = window.localStorage.getItem('theme') === 'dark' || (!('theme' in window.localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     return isSystemThemeDark ? 'dark' : 'light' || 'light';
@@ -16,7 +16,7 @@ export function getCurrentTheme() {
 export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState();
 
-    function toggleTheme(customTheme = '') {
+    const toggleTheme = (customTheme = '') => {
         if(customTheme !== '') {
 
             // Set defined theme
@@ -45,7 +45,7 @@ export function ThemeProvider({ children }) {
         }
     }
 
-    function updateSystemDefaultTheme() {
+    const updateSystemDefaultTheme = _ => {
         const isSystemThemeDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
         setTheme(() =>  isSystemThemeDark ? 'dark' : 'light');
@@ -80,4 +80,3 @@ export function ThemeProvider({ children }) {
         </ThemeContext.Provider>
     );
 }
-
