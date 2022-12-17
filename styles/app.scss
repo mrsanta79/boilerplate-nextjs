@@ -192,4 +192,21 @@
     .dark .select-box {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z'/%3E%3C/svg%3E");
     }
+
+    // Pagination
+    .pagination {
+        @apply flex flex-row gap-2 justify-center items-center;
+        .paginate-btn {
+            @apply w-7 sm:w-10 h-7 sm:h-10 rounded-full inline-grid place-items-center text-xs sm:text-lg font-bold cursor-pointer transition-colors bg-slate text-primary-500 hover:bg-primary-100;
+            &.active {
+                @apply bg-primary-500 text-white;
+            }
+            &.disabled {
+                @apply opacity-60 pointer-events-none;
+            }
+            svg {
+                @apply w-3 sm:w-4 h-3 sm:h-4;
+            }
+        }
+    }
 }
