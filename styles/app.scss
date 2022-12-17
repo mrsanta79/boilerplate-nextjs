@@ -47,13 +47,13 @@
     // Scroll bar
     .custom-scroll {
         &::-webkit-scrollbar-track {
-            @apply bg-dark-800;
+            @apply bg-transparent;
         }
         &::-webkit-scrollbar {
             @apply transition-all duration-300 w-2 h-4 bg-transparent;
         }
         &::-webkit-scrollbar-thumb {
-            @apply bg-dark-500 hover:bg-dark-300 rounded-lg m-1;
+            @apply bg-dark-400 dark:bg-dark-500 hover:bg-dark-300 rounded-lg m-1;
         }
         &.overlapping {
             overflow: overlay;
