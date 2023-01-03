@@ -31,8 +31,8 @@ export default function Application({ Component, pageProps }) {
 			window.addEventListener("load", function () {
 				navigator.serviceWorker
 					.register("/sw.js")
-					.then(serviceWorker => console.log(`Service Worker registered`))
-					.catch(error => console.log(`Service Worker registration failed`));
+					.then(serviceWorker => {})
+					.catch(err => console.log(`Service Worker registration failed: ${err}`));
 			});
 		}
     }, []);
@@ -50,7 +50,7 @@ export default function Application({ Component, pageProps }) {
 				{/* Page Loader */}
 				{
 					isPageLoading
-					? <div className="fixed inset-0 z-50 bg-darkest transition flex flex-row justify-center items-center">
+					? <div className="fixed inset-0 z-[100] bg-darkest transition flex flex-row justify-center items-center">
 						<Loader size="w-6 h-6" />
 					</div>
 					: null

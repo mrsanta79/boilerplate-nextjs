@@ -1,16 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
-export default function SharePopup({ link, isVisible, onClose }) {
+export default function SharePopup({ link, shortLink, disabled }) {
+    const [isVisible, setVisibility] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
-    const modifiedLink = `${process.env.NEXT_PUBLIC_APP_URL}${link}`;
+    const [modifiedLink, setModifiedLink] = useState(null);
+
+    useEffect(() => setModifiedLink(`${window.location.origin}/${link}`) /* `${shortLink !== null ? shortLink : link}` */, []);
 
     return(
         <>
+            <div className="actions">
+
+                {/* Share Button */}
+                <span
+                    className={`contents ${disabled ? 'pointer-events-none opacity-60' : ''}`}
+                    onClick={_ => setVisibility(true)}
+                >
+                    <button
+                        type="button"
+                        className='flex-1 h-full bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-gray-50 font-medium inline-flex justify-center items-center py-1 px-3 rounded-sm'
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                        </svg>
+                    </button>
+                </span>
+            </div>
+
             {/* Share Dialog */}
-            <div
-                className={`fixed z-50 inset-0 overflow-y-auto transition duration-150 ease-in-out ${isVisible ? '' : 'hidden'}`}
-            >
+            <div className={`fixed z-50 inset-0 overflow-y-auto transition duration-150 ease-in-out ${isVisible ? '' : 'hidden'}`}>
                 <div className="flex items-center justify-center min-h-screen text-center">
                     <div
                         className="fixed inset-0 transition-opacity"
@@ -21,24 +40,28 @@ export default function SharePopup({ link, isVisible, onClose }) {
 
                     <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
+                    {/* Modal */}
                     <div
-                        className="inline-block rounded-global text-left overflow-hidden transform align-middle mx-2 w-full sm:max-w-md"
+                        className="inline-block rounded-md text-left overflow-hidden  transform transition-all align-middle mx-2 xs:mx-0 w-full xs:w-3/4 sm:max-w-lg"
                         role="dialog"
                         aria-modal="true"
                         aria-labelledby="modal-headline"
                     >
-                        <div className="bg-white dark:bg-dark-800 p-4 text-dark-800 dark:text-dark-200">
+                        <div className="bg-white dark:bg-darkTopNavBg p-4">
                             <div className="sm:flex sm:items-start">
                                 <div className="text-left w-full">
+
+                                    {/* Popup title and close button */}
                                     <span className="header flex flex-row justify-between items-center">
-                                        <h3 className="text-xl leading-6 font-medium">Shpërndaje</h3>
-                                        <button onClick={onClose}>
-                                            <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <h3 className="text-xl leading-6 font-medium text-dark-700 dark:text-dark-200">Share</h3>
+                                        <button onClick={_ => setVisibility(false)}>
+                                            <svg className="w-6 h-6 text-dark-700 dark:text-dark-300 scale-90 hover:scale-100 transition-transform duration-75" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                                             </svg>
                                         </button>
                                     </span>
 
+                                    {/* Social links */}
                                     <div className="flex flex-row justify-between items-center mt-7">
                                         <a
                                             href={`https://www.facebook.com/sharer.php?u=${modifiedLink}`}
@@ -65,8 +88,7 @@ export default function SharePopup({ link, isVisible, onClose }) {
                                             </svg>
                                         </a>
                                         <a
-                                            href={`whatsapp://send?text=${modifiedLink}`}
-                                            data-action="share/whatsapp/share"
+                                            href={`whatsapp://send?text=${modifiedLink}" data-action="share/whatsapp/share`}
                                             target="_blank"
                                             className="rounded-full inline-flex justify-center items-center p-2 sm:p-3"
                                             style={{ backgroundColor: '#24cd63'}}
@@ -96,7 +118,8 @@ export default function SharePopup({ link, isVisible, onClose }) {
                                         </a>
                                     </div>
 
-                                    <div className="rounded-sm border border-dark-400 dark:border-dark-600 mt-7 py-2 px-3 flex flex-row justify-between items-center">
+                                    {/* Link to copy */}
+                                    <div className="rounded-sm border border-dark-500 mt-7 py-2 px-3 flex flex-row justify-between items-center">
                                         <span className="truncate w-full select-all">{modifiedLink}</span>
 
                                         <span
@@ -132,13 +155,13 @@ export default function SharePopup({ link, isVisible, onClose }) {
 // Props checking
 SharePopup.propTypes = {
     link: PropTypes.string,
-    isVisible: PropTypes.bool,
-    onClose: PropTypes.func,
+    shortLink: PropTypes.string,
+    disabled: PropTypes.bool,
 }
 
 // Default Props
 SharePopup.defaultProps = {
     link: '',
-    isVisible: false,
-    onClose: _ => {},
+    shortLink: '',
+    disabled: false,
 }
