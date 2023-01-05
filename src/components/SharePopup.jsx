@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
-export default function SharePopup({ link, shortLink, disabled }) {
+export default function SharePopup({ link, shortLink, disabled, shareButtonClass }) {
     const [isVisible, setVisibility] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const [modifiedLink, setModifiedLink] = useState(null);
@@ -19,7 +19,7 @@ export default function SharePopup({ link, shortLink, disabled }) {
                 >
                     <button
                         type="button"
-                        className='flex-1 h-full bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-gray-50 font-medium inline-flex justify-center items-center py-1 px-3 rounded-sm'
+                        className={`btn-primary ${shareButtonClass}`}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
@@ -157,6 +157,7 @@ SharePopup.propTypes = {
     link: PropTypes.string,
     shortLink: PropTypes.string,
     disabled: PropTypes.bool,
+    shareButtonClass: PropTypes.string,
 }
 
 // Default Props
@@ -164,4 +165,5 @@ SharePopup.defaultProps = {
     link: '',
     shortLink: '',
     disabled: false,
+    shareButtonClass: '',
 }
