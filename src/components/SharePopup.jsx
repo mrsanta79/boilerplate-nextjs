@@ -6,7 +6,7 @@ export default function SharePopup({ link, shortLink, disabled, shareButtonClass
     const [isCopied, setIsCopied] = useState(false);
     const [modifiedLink, setModifiedLink] = useState(null);
 
-    useEffect(() => setModifiedLink(`${window.location.origin}/${link}`) /* `${shortLink !== null ? shortLink : link}` */, []);
+    useEffect(() => setModifiedLink(`${shortLink !== null ? shortLink : window.location.origin + '/' + link}`) /* `` */, []);
 
     return(
         <>
