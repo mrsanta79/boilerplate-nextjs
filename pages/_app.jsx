@@ -22,6 +22,8 @@ export default function Application({ Component, pageProps }) {
 	const [isPageLoading, setPageLoadingStatus] = useState(true);
 
 	useEffect(() => {
+
+		// Site loader
         setTimeout(() => {
             setPageLoadingStatus(false);
         }, 500);
@@ -51,7 +53,7 @@ export default function Application({ Component, pageProps }) {
 				{
 					isPageLoading
 					? <div className="fixed inset-0 z-[100] bg-darkest transition flex flex-row justify-center items-center">
-						<Loader size="w-6 h-6" />
+						<Loader size="w-6" />
 					</div>
 					: null
 				}
