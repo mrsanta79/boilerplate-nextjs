@@ -1,20 +1,21 @@
-<p align="center">
+<div align="center">
   <a href="" rel="noopener">
  <!-- <img width=200px height=200px src="./public/icons/icon.svg" alt="Project logo"></a> -->
-</p>
+</div>
 
-<h3 align="center">NextJS Quick Start Boilerplate</h3>
+<div align='center'>
+  <h1>NextJS Quick Start Boilerplate</h1>
+</div>
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+![Status](https://img.shields.io/badge/status-active-success.svg)
 
 </div>
 
 ---
 
 <p align="center">This boilerplate will help you get started faster with everything setup already.</p>
-    <br> 
 </p>
 
 ## 📝 Table of Contents
@@ -27,15 +28,16 @@
 - [Usage](#usage)
 - [Authors](#authors)
 
-## 📖 About <a name = "about"></a>
+## 📖 About
 
 This NextJS Boilerplate provides a simplified experience for building a NextJS Application with pre-built components, hooks, providers and TailwindCSS already available for you out of the box.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## 🏁 Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the application on a live system.
 
-## ✅ Prerequisites <a name = "prerequisites"></a>
+## ✅ Prerequisites
+
 What things you need to install the software and how to install them.
 
 ```
@@ -48,37 +50,40 @@ or
 ```
 
 ## 🚧 Development
+
 ```
-- yarn install -d
+- yarn install
 - yarn dev
 ```
 
-## 🚀 Deployment <a name = "deployment"></a>
-###### Using Yarn
+## 🚀 Deployment
+
+### Using Yarn
+
 ````
 pm2 start yarn --name "app" -- start
 ````
 
-###### Using Docker
+### Using Docker
+
 ````
 INSTALL DOCKER
 - https://docs.docker.com/get-docker/
 
 BUILD & RUN
-- sudo docker build -t nextjs_app .
-- sudo docker run --name nextjs_app -p 3000:3000 --restart always -d nextjs_app
+- docker build -t nextjs-app .
+- docker run --name nextjs-app -p 3000:3000 --restart always -d nextjs-app
 
 START ALREADY BUILT CONTAINER
-- sudo docker start express_api_c
+- docker start nextjs-app
 
 RELOAD WITH UPDATED FILES
-- sudo docker restart express_api_c
+- docker restart nextjs-app
 
 AUTO START DOCKER DAEMON ON SYSTEM STARTUP
-- sudo systemctl enable docker
-- sudo service docker restart
+- sudo systemctl enable docker --now
 ````
 
-## ✍️ Authors <a name = "authors"></a>
+## ✍️ Authors
 
 - [@mrsanta79](https://github.com/mrsanta79)
