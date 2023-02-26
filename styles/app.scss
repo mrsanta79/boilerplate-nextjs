@@ -20,14 +20,6 @@
         font-family: 'Montserrat', sans-serif;
     }
 
-    // Global variables
-    .rounded-global {
-        @apply rounded;
-    }
-    .input-text-size-global {
-        @apply text-sm;
-    }
-
     // NProgress
     #nprogress {
         .bar {
@@ -68,7 +60,7 @@
 
     // Buttons
     .btn {
-        @apply px-5 py-1 inline-flex flex-row gap-2 items-center input-text-size-global whitespace-nowrap rounded-global font-primary;
+        @apply px-5 py-1 inline-flex flex-row gap-2 items-center text-sm whitespace-nowrap rounded font-primary;
         @apply border-2 border-transparent text-white;
         @apply disabled:pointer-events-none disabled:opacity-60;
     }
@@ -110,12 +102,12 @@
 
     // Label
     label {
-        @apply input-text-size-global text-primary-700 dark:text-primary-200 inline-flex flex-row items-center gap-2;
+        @apply text-sm text-primary-700 dark:text-primary-200 inline-flex flex-row items-center gap-2;
     }
 
     // Input Box
     .input-box {
-        @apply rounded-global pl-3 pr-3 py-1 input-text-size-global border text-dark-700 dark:text-white outline-0;
+        @apply rounded pl-3 pr-3 py-1 text-sm border text-dark-700 dark:text-white outline-0;
         @apply bg-white border-dark-400 focus:border-accent-600;
         @apply dark:bg-transparent dark:border-dark-600 focus:dark:border-dark-500;
 
@@ -163,7 +155,7 @@
 
     // Checkbox
     .checkbox {
-        @apply appearance-none w-5 h-5 bg-primary-600 rounded-global cursor-pointer;
+        @apply appearance-none w-5 h-5 bg-primary-600 rounded cursor-pointer;
         &:checked {
             @apply relative inline-flex items-center justify-center;
             &:after {
@@ -181,7 +173,7 @@
 
     // Select Box
     .select-box {
-        @apply appearance-none block rounded-global pl-3 pr-7 py-1 input-text-size-global border text-dark-700 dark:text-white outline-0 truncate cursor-pointer relative;
+        @apply appearance-none block rounded pl-3 pr-7 py-1 text-sm border text-dark-700 dark:text-white outline-0 truncate cursor-pointer relative;
         @apply bg-white border-dark-400 focus:border-accent-600;
         @apply dark:bg-transparent dark:border-dark-600 focus:dark:border-dark-500;
 

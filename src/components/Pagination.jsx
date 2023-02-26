@@ -1,16 +1,16 @@
 import React from 'react';
-import Pagination from 'react-js-pagination';
+import PaginationLib from 'react-js-pagination';
 import PropTypes from 'prop-types';
 
-export default function CustomPagination({ className, maxRange }) {
+export default function Pagination({ className, maxRange, currentPage, total, perPage, onChangePage }) {
     return (
         <div className={`${className}`}>
-            <Pagination
-                activePage={1}
-                itemsCountPerPage={10}
-                totalItemsCount={50}
+            <PaginationLib
+                activePage={currentPage}
+                itemsCountPerPage={perPage}
+                totalItemsCount={total}
                 pageRangeDisplayed={maxRange}
-                onChange={_ => {}}
+                onChange={onChangePage}
                 innerClass='pagination'
                 itemClass='paginate-btn'
                 prevPageText={
@@ -38,11 +38,19 @@ export default function CustomPagination({ className, maxRange }) {
     )
 }
 
-CustomPagination.propTypes = {
+Pagination.propTypes = {
     className: PropTypes.string,
     maxRange: PropTypes.number,
+    currentPage: PropTypes.number,
+    total: PropTypes.number,
+    perPage: PropTypes.number,
+    onChangePage: PropTypes.func,
 }
-CustomPagination.defaultProps = {
+Pagination.defaultProps = {
     className: '',
     maxRange: 3,
+    currentPage: 1,
+    total: 50,
+    perPage: 10,
+    onChangePage: _ => {},
 }

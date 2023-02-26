@@ -6,7 +6,7 @@ export default function Modal(props) {
 
     return (
         <div className={`${isVisible ? 'fixed' : 'hidden'} inset-0 z-40 bg-dark-800 bg-opacity-70 flex flex-row sm:justify-center sm:items-center`}>
-            <div className={`max-w-none ${'sm:' + maxWidth} w-full bg-dark-50 dark:bg-dark-700 sm:rounded-global sm:m-4`}>
+            <div className={`max-w-none ${'sm:' + maxWidth} w-full bg-dark-50 dark:bg-dark-700 sm:rounded sm:m-4`}>
 
                 {/* Header */}
                 <div className="flex flex-row items-center sm:justify-between gap-5 sm:gap-3 text-dark-700 dark:text-dark-200 px-4 sm:px-3 py-4 sm:py-2 border-b-2 border-dark-200 dark:border-dark-500">

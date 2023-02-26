@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export default function ErrorsCard({ errors, onClear }) {
     return (
         errors
-        ? <div className="flex flex-row justify-between items-start relative bg-red-200 border border-red-500 text-red-600 rounded-global p-2">
+        ? <div className="flex flex-row justify-between items-start relative bg-red-200 border border-red-500 text-red-600 rounded p-2">
             <div className="flex flex-col">
                 {
                     typeof errors !== 'string' && errors.length
