@@ -5,8 +5,10 @@
     * {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: antialiased;
-        font-family: 'Montserrat', sans-serif;
         box-sizing: border-box;
+    }
+    html, body {
+        font-family: 'Montserrat', sans-serif;
     }
 
     [cloak] {
