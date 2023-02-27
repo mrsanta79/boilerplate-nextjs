@@ -41,7 +41,7 @@ export default function Document() {
 				<link rel="apple-touch-startup-image" href="/splash-screens/splash-screen-2048-x-2732.jpg" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)" /> */}
 			</Head>
 
-			<body className="bg-blue-50 dark:bg-darkest font-sans antialiased">
+			<body className="bg-blue-50 dark:bg-darkest antialiased">
 				<Main />
 				<NextScript />
 			</body>
