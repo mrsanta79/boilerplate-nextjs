@@ -15,7 +15,7 @@ export default async function (endpoint = null, method = 'GET', data = null, has
     let headersConfig = {
         'Content-Type': hasFiles ? 'multipart/form-data' : 'application/json',
         'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': window?.location?.origin || '*',
         'Authorization': `Bearer `,
     }
 
