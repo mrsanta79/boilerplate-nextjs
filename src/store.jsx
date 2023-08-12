@@ -12,6 +12,9 @@ export const useUser = create(
                 role: role,
                 token: token,
             }),
+            setUser: (user) => set({
+                user: user,
+            }),
             updateToken: (role, token) => set({
                 role: role,
                 token: token,
@@ -20,9 +23,6 @@ export const useUser = create(
                 role: null,
                 token: null,
                 user: null,
-            }),
-            setUser: (user) => set({
-                user: user,
             }),
         }),
         {
