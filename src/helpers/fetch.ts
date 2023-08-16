@@ -1,54 +1,52 @@
 'use strict';
 
-import axios from 'axios';
-
 interface FetchProps {
     baseUrl?: string,
     endpoint: string,
     method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
-    data?: any,
-    containsFiles: boolean,
+    body?: any,
     headers?: object,
 }
 const defaultFetchProps: FetchProps = {
     baseUrl: process.env.NEXT_PUBLIC_API_URL,
     endpoint: '',
     method: 'GET',
-    data: null,
-    containsFiles: false,
+    body: null,
     headers: {},
 };
 
-export default async function (options: FetchProps) {
+export default async function(options: FetchProps) {
     const {
         baseUrl = defaultFetchProps.baseUrl,
         endpoint = defaultFetchProps.endpoint,
         method = defaultFetchProps.method?.toUpperCase(),
-        data = defaultFetchProps.data,
-        containsFiles = defaultFetchProps.containsFiles || false,
+        body = defaultFetchProps.body,
         headers = defaultFetchProps.headers,
     } = options;
 
     // Throw error if endpoint is not provided
-    if (!endpoint) throw new Error('API endpoint is required');
+    if (!endpoint) throw new Error('Endpoint is required');
 
     // Throw error if method does not match
     if (!['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) throw new Error('Method is not valid');
 
     let predefinedHeaders = {
-        'Content-Type': containsFiles ? 'multipart/form-data' : 'application/json',
+        'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Access-Control-Allow-Origin': window?.location?.origin || '*',
+        'Access-Control-Allow-Origin': '*',
     };
 
-    return await axios({
-        url: `${baseUrl}${endpoint}`,
+    const url: string = `${baseUrl}${endpoint?.startsWith('/') ? endpoint : `/${endpoint}`}`;
+    const response = await fetch(url, {
         method: method,
         headers: {
             ...predefinedHeaders,
             ...headers,
         },
-        data: data,
-    })
-    .then(response => response.data);
+        body: body ? JSON.stringify(body) : null,
+    });
+
+    if(!response.ok) throw new Error(await response.text());
+
+    return await response.json();
 }
