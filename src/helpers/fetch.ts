@@ -30,17 +30,13 @@ export default async function(options: FetchProps) {
     // Throw error if method does not match
     if (!['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) throw new Error('Method is not valid');
 
-    let predefinedHeaders = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-    };
-
     const url: string = `${baseUrl}${endpoint?.startsWith('/') ? endpoint : `/${endpoint}`}`;
     const response = await fetch(url, {
         method: method,
         headers: {
-            ...predefinedHeaders,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*',
             ...headers,
         },
         body: body ? JSON.stringify(body) : null,
