@@ -1,4 +1,5 @@
 'use strict';
+import axios from 'axios';
 
 interface FetchProps {
     baseUrl?: string,
@@ -6,13 +7,15 @@ interface FetchProps {
     method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
     body?: any,
     headers?: object,
+    options?: any,
 }
 const defaultFetchProps: FetchProps = {
-    baseUrl: process.env.NEXT_PUBLIC_API_URL,
+    baseUrl: process.env.API_URL,
     endpoint: '',
     method: 'GET',
     body: null,
     headers: {},
+    options: {},
 };
 
 export default async function(options: FetchProps) {
@@ -22,6 +25,7 @@ export default async function(options: FetchProps) {
         method = defaultFetchProps.method?.toUpperCase(),
         body = defaultFetchProps.body,
         headers = defaultFetchProps.headers,
+        options: extraOptions = defaultFetchProps.options,
     } = options;
 
     // Throw error if endpoint is not provided
@@ -31,18 +35,23 @@ export default async function(options: FetchProps) {
     if (!['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) throw new Error('Method is not valid');
 
     const url: string = `${baseUrl}${endpoint?.startsWith('/') ? endpoint : `/${endpoint}`}`;
-    const response = await fetch(url, {
-        method: method,
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            ...headers,
-        },
-        body: body ? JSON.stringify(body) : null,
-    });
 
-    if(!response.ok) throw new Error(await response.text());
+    try {
+        const response = await axios({
+            method: method,
+            url: url,
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                ...headers,
+            },
+            data: body ? JSON.stringify(body) : null,
+            ...extraOptions,
+        });
 
-    return await response.json();
+        return response.data;
+    } catch (error: any) {
+        throw new Error(error);
+    }
 }
