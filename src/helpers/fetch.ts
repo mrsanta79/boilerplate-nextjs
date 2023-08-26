@@ -1,13 +1,12 @@
-'use strict';
 import axios from 'axios';
 
 interface FetchProps {
-    baseUrl?: string,
-    endpoint: string,
-    method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
-    body?: any,
-    headers?: object,
-    options?: any,
+    baseUrl?: string;
+    endpoint: string;
+    method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+    body?: any;
+    headers?: object;
+    options?: any;
 }
 const defaultFetchProps: FetchProps = {
     baseUrl: process.env.API_URL,
@@ -18,28 +17,28 @@ const defaultFetchProps: FetchProps = {
     options: {},
 };
 
-export default async function(options: FetchProps) {
+export default async function fetch(options: FetchProps) {
     const {
         baseUrl = defaultFetchProps.baseUrl,
         endpoint = defaultFetchProps.endpoint,
-        method = defaultFetchProps.method?.toUpperCase(),
+        method = defaultFetchProps.method?.toString()?.toUpperCase() ?? 'GET',
         body = defaultFetchProps.body,
         headers = defaultFetchProps.headers,
         options: extraOptions = defaultFetchProps.options,
     } = options;
 
     // Throw error if endpoint is not provided
-    if (!endpoint) throw new Error('Endpoint is required');
+    if (endpoint?.trim() === '') throw new Error('Endpoint is required.');
 
     // Throw error if method does not match
-    if (!['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) throw new Error('Method is not valid');
+    if (!['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) throw new Error('Method is not supported.');
 
     const url: string = `${baseUrl}${endpoint?.startsWith('/') ? endpoint : `/${endpoint}`}`;
 
     try {
         const response = await axios({
-            method: method,
             url: url,
+            method: method,
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
