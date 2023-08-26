@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 interface FetchProps {
-    baseUrl?: string;
+    baseURL?: string;
+    url?: string;
     endpoint: string;
     method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
     body?: any;
@@ -9,7 +10,7 @@ interface FetchProps {
     options?: any;
 }
 const defaultFetchProps: FetchProps = {
-    baseUrl: process.env.API_URL,
+    baseURL: process.env.API_URL,
     endpoint: '',
     method: 'GET',
     body: null,
@@ -19,7 +20,7 @@ const defaultFetchProps: FetchProps = {
 
 export default async function fetch(options: FetchProps) {
     const {
-        baseUrl = defaultFetchProps.baseUrl,
+        baseURL = defaultFetchProps.baseURL,
         endpoint = defaultFetchProps.endpoint,
         method = defaultFetchProps.method?.toString()?.toUpperCase() ?? 'GET',
         body = defaultFetchProps.body,
@@ -33,11 +34,10 @@ export default async function fetch(options: FetchProps) {
     // Throw error if method does not match
     if (!['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) throw new Error('Method is not supported.');
 
-    const url: string = `${baseUrl}${endpoint?.startsWith('/') ? endpoint : `/${endpoint}`}`;
-
     try {
         const response = await axios({
-            url: url,
+            baseURL: baseURL,
+            url: endpoint,
             method: method,
             headers: {
                 'Content-Type': 'application/json',
