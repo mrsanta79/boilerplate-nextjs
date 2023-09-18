@@ -51,6 +51,8 @@ export default async function fetch(options: FetchProps) {
 
         return response.data;
     } catch (error: any) {
-        throw new Error(error);
+        if (error.response) throw new Error(error.response.data.message);
+        else if (error.request) throw new Error('No response from server.');
+        else throw new Error(error.message);
     }
 }
